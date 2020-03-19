@@ -1,3 +1,5 @@
+from IPython.display import clear_output
+
 import os
 import urllib
 
@@ -11,7 +13,8 @@ def deal_with_duplicates(infile):
     N = len(lines)
 
     with open(infile, "w") as f:
-        for i in range(0, N, 1):
+        for i in range(0, N):
+#             print("i = {}".format(i+1))
             if i%4 == 0:
                 key = lines[i]
                 if key in frequencies:
@@ -35,7 +38,10 @@ def get_images(infile, N, out_dir="/home/ankit/Desktop/IIT-G/Code/images"):
         lines = lines[:(N*4)]
 
     for i in range(0, (N*4), 4):
+        clear_output(wait=True)
+        print(i)
         sample = lines[i : i+4]
+        print(sample)
         label = sample[0]
         query = sample[1]
         pos = sample[2]
